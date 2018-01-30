@@ -58,11 +58,11 @@ class Model:
 
     def update_goal(self, row, id):
         self.conn.execute("UPDATE finance.goal SET money = " + row[0]
-                          + " ,type = '" + row[1]
-                          + "' ,description = '" + row[2]
-                          + "' ,priority = " + row[3]
-                          + ", completed = " + str(row[4])
-                          + " WHERE goal_id = " + str(id))
+                              + " ,type = '" + row[1]
+                              + "' ,description = '" + row[2]
+                              + "' ,priority = " + row[3]
+                              + ", completed = " + str(row[4])
+                              + " WHERE goal_id = " + str(id))
         self.populate_goal(self.goal_list_store)
 
     def delete_goal(self, id):
@@ -79,9 +79,13 @@ class Model:
         self.populate_type(self.type_list_store)
 
     def update_type(self, row, type):
-        self.conn.execute("UPDATE finance.type SET type = '" + row[0]
+        if row[1] != '':
+            self.conn.execute("UPDATE finance.type SET type = '" + row[0]
                           + "', default_value = " + row[1]
                           + " WHERE type = '" + type + "'")
+        else:
+            self.conn.execute("UPDATE finance.type SET type = '" + row[0]
+                          + "' WHERE type = '" + type + "'")
         self.populate_type(self.type_list_store)
 
     def delete_type(self, type):

@@ -172,7 +172,7 @@ class OperationEntryWindow(Gtk.Window):
             self.close()
 
     def is_ready_for_save(self):
-        return self.money_entry.get_text() != '' and self.type_entry.get_text() != '' and self.description_entry.get_text() != ''
+        return self.money_entry.get_text() != '' and self.type_entry.get_text() != ''
 
 
 class GoalEntryWindow(Gtk.Window):
