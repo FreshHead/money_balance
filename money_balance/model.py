@@ -4,7 +4,7 @@ from money_balance import Gtk
 
 class Model:
     def __init__(self):
-        self.conn = sa.create_engine("postgresql://postgres:postgres@92.255.198.104:5432/money_balance")
+        self.conn = sa.create_engine("postgresql://postgres:postgres@localhost:5432/money_balance")
 
         self.operation_list_store = Gtk.ListStore(int, int, str, str, str)
         self.populate_operation(self.operation_list_store)
